@@ -1,0 +1,54 @@
+﻿@model IEnumerable<bnebookstore_dbfirstmvcproject.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage2.cshtml";
+}
+
+<h2>Customer Page</h2>
+
+<p>
+    @Html.ActionLink("New Customer", "New", null, new { @class = "btn btn-success" })
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameSurname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Region)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => customer.NameSurname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => customer.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => customer.Region)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => customer.PhoneNumber)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = customer.CustomerNo }, new { @class = "btn btn-danger" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = customer.CustomerNo }, new { @class = "btn btn-warning" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

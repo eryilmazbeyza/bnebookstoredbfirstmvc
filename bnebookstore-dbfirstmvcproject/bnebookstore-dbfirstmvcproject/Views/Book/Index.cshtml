@@ -1,0 +1,53 @@
+﻿@model IEnumerable<bnebookstore_dbfirstmvcproject.Models.Book>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<h2>Books Page</h2>
+@Html.ActionLink("New Book", "New", null, new { @class = "btn btn-success" })
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Publisher</th>
+            <th>Author</th>
+            <th>Publication Date</th>
+            <th>Certification Number</th>
+            <th>e-Book</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+
+            <tr>
+                <td>@book.Name</td>
+                <td>@book.Publisher</td>
+                <td>@book.Author</td>
+                <td>@book.PublicationDate</td>
+                <td>@book.CertificationNumber</td>
+                <td>
+                    @if (@book.EBook == true)
+                    {
+                        <span>e-Book format is ready.</span>
+                    }
+                    else
+                    {
+                        <span>e-Book format is not ready.</span>
+                    }
+                </td>
+                <td>@book.Price</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=book.BookNo}, new { @class = "btn btn-danger" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = book.BookNo }, new { @class = "btn btn-warning" })
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+    
+</table>

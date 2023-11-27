@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<h2>Employee Page</h2>
+@Html.ActionLink("New Employee", "New", null, new { @class = "btn btn-success" })
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>NameSurname</th>
+            <th>PhoneNumber</th>
+            <th>Title</th>
+            <th>Region</th>
+            <th>Adress</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+
+            <tr>
+                <td>@employee.NameSurname</td>
+                <td>@employee.PhoneNumber</td>
+                <td>@employee.Title</td>
+                <td>@employee.Region</td>
+                <td>@employee.Adress</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = employee.EmployeeNo }, new { @class = "btn btn-danger" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = employee.EmployeeNo }, new { @class = "btn btn-warning" })
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+
+</table>

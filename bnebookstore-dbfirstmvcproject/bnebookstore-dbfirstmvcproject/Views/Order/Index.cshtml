@@ -1,0 +1,59 @@
+﻿@model IEnumerable<bnebookstore_dbfirstmvcproject.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage2.cshtml";
+}
+
+<h2>Order Page</h2>
+
+@Html.ActionLink("New Order", "New", null, new { @class = "btn btn-success" })
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateofOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Basket)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPayment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerNo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => order.DateofOrder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => order.Basket)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => order.TotalPayment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => order.Adress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => order.CustomerNo)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = order.OrderNo }, new { @class = "btn btn-danger" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = order.OrderNo }, new { @class = "btn btn-warning" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
